@@ -74,7 +74,7 @@ graph TD
         H2 --> I2[Quality Check]
         I2 --> J2[Output Generation]
     end
-
+```
 
 ## Results
 
@@ -83,8 +83,8 @@ graph TD
 | Aspect                | Model 1 (Balance) | Model 2 (Balance) | Advantage                  |
 |-----------------------|-------------------|-------------------|----------------------------|
 | **Structure**         | Fixed sections    | Adaptive formatting| Better content matching    |
-| **Readability**       | Good (3.8/5)      | **Excellent (4.6/5)** | Improved flow              |
-| **Detail Preservation** | 82% key points  | **88% key points** | More comprehensive         |
+| **Readability**       | Good (3.8/5)      | **Excellent (4.5/5)** | Improved flow              |
+| **Detail Preservation** | 84% key points  | **90% key points** | More comprehensive         |
 | **Formatting**        | Basic Markdown    | **Rich formatting** | Professional appearance    |
 
 ---
@@ -93,8 +93,8 @@ graph TD
 
 | Metric               | Model 1           | Model 2           | Improvement        |
 |----------------------|-------------------|-------------------|--------------------|
-| **Processing Speed** | 12s per 1k words  | **10s per 1k words** | 16% faster         |
-| **Accuracy Score**   | 84%               | **89%**           | 5% more accurate   |
+| **Processing Speed** | 12s per 1k words  | **10s per 1k words** | 16% faster        |
+| **Accuracy Score**   | 85%               | **90%**           | 5% more accurate   |
 | **File Handling**    | N/A               | **95% success rate** | New capability    |
 
 ---
