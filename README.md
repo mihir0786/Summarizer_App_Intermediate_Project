@@ -52,30 +52,40 @@ From Model 1 to Model 2, we implemented:
 ## Architecture
 
 ### Comparative Flowchart
-
 ```mermaid
 graph TD
-    subgraph Model1[Model 1 Flow]
-        A1[Text Input] --> B1[Length Check]
-        B1 -->|Long| C1[Basic Chunking]
-        B1 -->|Short| D1[Direct Processing]
-        C1 --> E1[Sequential Processing]
-        D1 --> F1[Generate Summary]
+    subgraph Model1[Model 1 Flow - Text Only]
+        A1[Start / Load Page] --> B1[Paste Text in Text Area]
+        B1 --> C1[Show Word/Char Count]
+        C1 --> D1{Chars < 100?}
+        D1 -->|Yes| E1[Show Short Text Warning]
+        D1 -->|No| F1[Proceed]
         E1 --> F1
+        F1 --> G1[Select Summary Density]
+        G1 --> H1[Click Generate Summary]
+        H1 --> I1[Run LLMChain with Prompt]
+        I1 --> J1[Display Summary in UI]
+        J1 --> K1[Allow Download as TXT]
     end
-    
-    subgraph Model2[Model 2 Flow]
-        A2[File/Text Input] --> B2{Input Type}
-        B2 -->|File| C2[File Extraction]
-        B2 -->|Text| D2[Text Validation]
-        C2 --> E2[Content Analysis]
-        D2 --> E2
-        E2 --> F2[Smart Chunking]
-        F2 --> G2[Progress Tracking]
-        G2 --> H2[Adaptive Formatting]
-        H2 --> I2[Quality Check]
-        I2 --> J2[Output Generation]
+
+    subgraph Model2[Model 2 Flow - File or Text]
+        A2[Start / Load Page] --> B2[Upload File or Paste Text]
+        B2 -->|File| C2["Extract Text (PDF/DOCX)"]
+        C2 -->|Extraction Failed| Z2[Show Error & Stop]
+        C2 -->|Extraction Success| D2[Use Extracted Text]
+        B2 -->|Text| D2
+        D2 --> E2[Show Word/Char Count]
+        E2 --> F2{Chars < 100?}
+        F2 -->|Yes| G2[Show Short Text Warning]
+        F2 -->|No| H2[Proceed]
+        G2 --> H2
+        H2 --> I2[Select Summary Density]
+        I2 --> J2[Click Generate Summary]
+        J2 --> K2[Run LLMChain with Prompt]
+        K2 --> L2[Display Summary in UI]
+        L2 --> M2[Allow Download as TXT]
     end
+
 ```
 
 ## Results
