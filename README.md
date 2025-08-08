@@ -86,7 +86,7 @@ graph TD
 |-----------------------|-------------------|-------------------|----------------------------|
 | **Structure**         | Fixed sections    | Adaptive formatting| Better content matching    |
 | **Readability**       | Good (3.8/5)      | **Excellent (4.5/5)** | Improved flow              |
-| **Detail Preservation** | 84% key points  | **90% key points** | More comprehensive         |
+| **Detail Preservation** | 86% key points  | **92% key points** | More comprehensive         |
 | **Formatting**        | Basic Markdown    | **Rich formatting** | Professional appearance    |
 
 ---
