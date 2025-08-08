@@ -1,10 +1,12 @@
 # Summarizer_App_Intermediate_Project
-# Text Summarization Pro
+
+An advanced NLP-powered text summarization application using **LangChain** and **OpenAI-compatible models**.  
+This tool processes long documents and produces concise, structured summaries with **customized output formats** and **file upload support**.
 
 <img width="2850" height="1523" alt="Screenshot 2025-08-07 215032" src="https://github.com/user-attachments/assets/c4a91f64-4c25-405c-aec0-62dacd5fc6ce" />
 
 
-An advanced NLP-powered text summarization application using LangChain and OpenAI-compatible models. This tool converts lengthy documents into structured summaries with customizable output formats.
+---
 
 ## Table of Contents
 - [Model Comparison](#model-comparison)
@@ -109,3 +111,19 @@ graph TD
 | **Error Resilience** | Recovers gracefully from malformed files and maintains session state |
 
 ---
+
+## Advantages & Areas for Improvement
+
+**✅ Advantages**
+- Handles PDF/DOCX with 95% extraction success rate  
+- Adaptive formatting for better readability  
+- Visual progress tracking and estimated completion time  
+- Recovers from malformed files without losing session state  
+
+**⚠️ Areas for Improvement**
+- Processing speed for extremely large files could be optimized further  
+- Option to choose different summarization models could be added  
+- Multi-language summarization support could be expanded  
+
+---
+
