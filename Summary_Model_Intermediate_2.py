@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 import streamlit as st
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import ChatOpenAI
 import fitz
 from docx import Document
@@ -49,7 +48,7 @@ with st.sidebar:
         help="Control how condensed the summary should be"
     )
     
-    # NOTE: These length parameters are defined but not currently used in the summarization logic
+    # NOTE: These parameters are passed to generate_response but not used in the prompt template
     length_params = {
         "Concise": {"max_length": 80, "min_length": 40},
         "Balanced": {"max_length": 150, "min_length": 90},
@@ -96,9 +95,7 @@ txt_input = st.text_area(
     placeholder="Paste your article, report, or any text you want summarized..."
 )
 
-# ==============================================
-# FILE PROCESSING
-# ==============================================
+# Handle file content if uploaded
 if uploaded_file is not None:
     with st.spinner('📄 Extracting text from document...'):
         extracted_text = extract_text_from_file(uploaded_file)
@@ -108,15 +105,13 @@ if uploaded_file is not None:
             st.success("✅ Document extracted successfully!")
 else:
     st.session_state.use_file_content = False
-    st.session_state.extracted_text = ""
 
+# Use extracted text if available
 if 'extracted_text' in st.session_state and st.session_state.get('use_file_content', False):
     txt_input = st.session_state.extracted_text
-else:
-    st.session_state.use_file_content = False
 
 # ==============================================
-# TEXT STATISTICS
+# TEXT STATISTICS DISPLAY
 # ==============================================
 if txt_input:
     char_count = len(txt_input)
@@ -215,7 +210,7 @@ with st.form(key='summary_form'):
             start_time = time.time()
             params = length_params[summary_length]
             
-            # NOTE: The length parameters are passed to generate_response but not used in the prompt
+            # NOTE: The length parameters are passed but not used in the prompt template
             with st.spinner(f'✨ Crafting {summary_length.lower()} summary...'):
                 response = generate_response(txt_input, params["max_length"], params["min_length"])
                 processing_time = time.time() - start_time
